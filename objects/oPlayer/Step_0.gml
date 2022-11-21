@@ -70,3 +70,32 @@ if global.life < 1
 {
 	game_restart();
 }
+
+#region troca os sprites
+if (!place_meeting(x,y+1,oWall))
+{
+	sprite_index = sPlayerInitialJump;
+	if (sign(vspd) >0.5) sprite_index = sPlayerFall; else sprite_index = sPlayerInitialJump;
+}
+else	
+{
+	if(hspd !=0)
+	{
+		sprite_index = sPlayerRunning;
+	}
+}
+if hspd=0
+{
+	if place_meeting(x,y+1,oWall)
+	{
+		sprite_index=sPlayerIdle;
+	}
+}
+if hspd!= 0
+{
+	if place_meeting(x,y+1,oWall)
+	{
+		sprite_index=sPlayerRunning;
+	}
+}
+#endregion	
