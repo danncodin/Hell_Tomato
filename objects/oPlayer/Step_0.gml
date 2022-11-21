@@ -65,3 +65,8 @@ if key_shoot and global.bullets > 0
 	
 }
 #endregion
+
+if global.life < 1
+{
+	game_restart();
+}
