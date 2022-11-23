@@ -3,4 +3,4 @@ hspd=0; //velocidade horizontal
 vspd=0; //velocidade vertical
 grv=0.45; //gravidade
 global.bullets=5; //quantidade de balas
-global.life=0.4; 
+global.life=4; 

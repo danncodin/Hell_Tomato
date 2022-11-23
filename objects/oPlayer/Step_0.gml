@@ -2,8 +2,9 @@
 key_right=keyboard_check(vk_right) //RIGHT D
 key_left=keyboard_check(vk_left) //LEFT A
 key_jump=keyboard_check(ord("Z")) //JUMP SPACE
-key_shoot=keyboard_check_pressed(ord("X")) // SHOOT
+
 #endregion
+
 #region  Movimentacao
 var move= key_right - key_left
 
@@ -40,8 +41,8 @@ if place_meeting(x,y+1,oWall) and key_jump
 {
 	vspd-=10;
 }
-
  #endregion
+
 
 #region Tiro
 
@@ -49,6 +50,7 @@ var flipped=direction;
 var gun_x=(x+4)*(flipped) // Atirar na direção que o personagem está
 var _xx = x + lengthdir_x(15,image_angle) // Posição da origem do tiro
 var y_offset= lengthdir_y(-20,image_angle)
+
 
 if key_shoot and global.bullets > 0
 {
@@ -64,7 +66,7 @@ if key_shoot and global.bullets > 0
 	}
 	
 }
-#endregion
+
 
 if global.life < 1
 {
