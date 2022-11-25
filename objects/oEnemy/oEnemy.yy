@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "oEnemy",
   "spriteId": {
-    "name": "sEnemy",
-    "path": "sprites/sEnemy/sEnemy.yy",
+    "name": "sEnemyIdle",
+    "path": "sprites/sEnemyIdle/sEnemyIdle.yy",
   },
   "solid": false,
   "visible": true,
