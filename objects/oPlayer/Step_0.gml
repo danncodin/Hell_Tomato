@@ -1,50 +1,36 @@
-#region Controles
-key_right=keyboard_check(vk_right) //RIGHT D
-key_left=keyboard_check(vk_left) //LEFT A
-key_jump=keyboard_check(ord("Z")) //JUMP SPACE
-key_shoot=keyboard_check_pressed(ord("X")) // SHOOT
-#endregion
 
 #region  Movimentacao
-var move= key_right - key_left
+var hinput = keyboard_check(vk_right) - keyboard_check(vk_left);
 
-hspeed_ = move * spd;
-
-vspd = vspd + grv;
+if hinput != 0 
+{
+	hspeed_ += hinput*acc_;
+	hspeed_ = clamp(hspeed_, -speed_, speed_);
+}else
+{
+	hspeed_ = lerp(hspeed_, 0, friction_);
+}
 
 if (hspeed_ !=0) image_xscale = sign(hspeed_);
 
-//COLISÃO HORIZONTAL 
-if place_meeting(x+hspeed_,y,oWall)
-{
-	while(!place_meeting(x+sign(hspeed_),y,oWall))
-	{
-		x=x+sign(hspeed_);
-	}
-hspeed_=0;
-}
-x=x+hspeed_;
-
-//COLISÃO VERTICAL
-if place_meeting(x,y+vspeed_,oWall)
-{
-	while(!place_meeting(x,y+sign(vspeed_),oWall))
-	{
-		y=y+sign(vspeed_);
-	}
-vspeed_=0;
-}
-y=y+vspeed_;
-
 //JUMP
-if place_meeting(x,y+1,oWall) and key_jump
+if !place_meeting(x,y+1,oWall)
 {
-	vspeed_-=10;
+	vspeed_ += grv_;
+}else
+{
+	if keyboard_check(ord("Z"))
+	{
+		vspeed_ = jumpHeight_;
+	}	
 }
+
+scrMove();
  #endregion
-
-
+ 
 #region Tiro
+key_shoot=keyboard_check_pressed(ord("X")) // SHOOT
+
 var flipped=direction;
 var gun_x=(x+4)*(flipped) // Atirar na direção que o personagem está
 var _xx = x + lengthdir_x(15,image_angle) // Posição da origem do tiro
@@ -57,7 +43,7 @@ if key_shoot and global.bullets > 0
 	{
 		global.bullets--;
 		// VELOCIDADE DO TIRO
-		speed = 10;
+		speed = 5;
 		// DIREÇÃO
 		direction = -90 + 90 * other.image_xscale;
 		// ANGULO
@@ -68,6 +54,7 @@ if key_shoot and global.bullets > 0
 #endregion
 
 
+
 if global.life < 1
 {
 	game_restart();
@@ -75,6 +62,8 @@ if global.life < 1
 
 
 #region troca os sprites
+if (hspeed_ != 0) image_xscale = sign(hspeed_);
+
 if (!place_meeting(x,y+1,oWall))
 {
 	sprite_index = sPlayerInitialJump;
@@ -82,12 +71,12 @@ if (!place_meeting(x,y+1,oWall))
 }
 else	
 {
-	if(hspeed_ !=0)
+	if(hspeed_ != 0)
 	{
 		sprite_index = sPlayerRunning;
 	}
 }
-if hspeed_=0
+if hspeed_ = 0
 {
 	if place_meeting(x,y+1,oWall)
 	{
