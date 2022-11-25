@@ -22,3 +22,5 @@ if global.life=0
 {
 draw_sprite(sSlotLife, 0, 35, 62)
 }
+
+draw_text(1200, 30, global.bullets);
