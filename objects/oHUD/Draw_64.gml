@@ -23,4 +23,6 @@ if global.life=0
 draw_sprite(sSlotLife, 0, 35, 62)
 }
 
-draw_text(1200, 30, global.bullets);
+draw_set_halign(fa_right);
+draw_text(display_get_gui_width()-6, 4, "Score: " + string(score));
+draw_set_halign(fa_left);

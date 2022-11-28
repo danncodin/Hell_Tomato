@@ -1,2 +1,4 @@
 speed = 5;
-direction = point_direction(x, y, mouse_x, mouse_y);
+depth = -1;
+
+audio_play_sound(aFogo, 5, false);

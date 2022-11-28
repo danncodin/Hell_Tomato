@@ -1,5 +1,13 @@
-/// @Description Move towards the Player
-var dir = point_direction(x, y, oPlayer.x, oPlayer.y);
-hspeed_ = lengthdir_x(speed_, dir);
-vspeed_ = lengthdir_y(speed_, dir);
-scrMove();
+/// @Description Move towards the Player 
+event_user(state_);
+
+// Warp Horizontal
+warp();
+
+#region Death
+if health_ < 0
+{
+	score += 10;
+	instance_destroy();
+}
+#endregion

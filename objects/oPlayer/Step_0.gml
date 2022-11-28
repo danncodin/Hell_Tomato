@@ -1,4 +1,4 @@
-
+/// @ description Player Movement
 #region  Movimentacao
 var hinput = keyboard_check(vk_right) - keyboard_check(vk_left);
 
@@ -19,47 +19,22 @@ if !place_meeting(x,y+1,oWall)
 	vspeed_ += grv_;
 }else
 {
-	if keyboard_check(ord("Z"))
+	if keyboard_check(ord("W"))
 	{
 		vspeed_ = jumpHeight_;
 	}	
 }
 
-scrMove();
+move();
  #endregion
- 
-#region Tiro
-key_shoot=keyboard_check_pressed(ord("X")) // SHOOT
-
-var flipped=direction;
-var gun_x=(x+4)*(flipped) // Atirar na direção que o personagem está
-var _xx = x + lengthdir_x(15,image_angle) // Posição da origem do tiro
-var y_offset= lengthdir_y(-20,image_angle)
-
-
-if key_shoot and global.bullets > 0
-{
-	with (instance_create_layer(_xx,y+10,"Shoot",oShoot))
-	{
-		global.bullets--;
-		// VELOCIDADE DO TIRO
-		speed = 5;
-		// DIREÇÃO
-		direction = -90 + 90 * other.image_xscale;
-		// ANGULO
-		image_angle=direction;
-	}
-	
-}
-#endregion
-
-
 
 if global.life < 1
 {
-	game_restart();
+	room_goto(rGameOver);
 }
 
+// WARP
+warp();
 
 #region troca os sprites
 if (hspeed_ != 0) image_xscale = sign(hspeed_);
@@ -91,3 +66,5 @@ if vspeed_ != 0
 	}
 }
 #endregion	
+
+

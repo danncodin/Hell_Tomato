@@ -10,8 +10,8 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 9,
-  "bbox_right": 29,
+  "bbox_left": 2,
+  "bbox_right": 26,
   "bbox_top": 2,
   "bbox_bottom": 30,
   "HTile": false,
@@ -25,8 +25,8 @@
     "path": "texturegroups/Default",
   },
   "swatchColours": null,
-  "gridX": 0,
-  "gridY": 0,
+  "gridX": 4,
+  "gridY": 4,
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"765b3cf1-83e1-49c0-baaf-23735ff38576",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"0a6a730d-5d47-4a72-9122-13cd9f9217b2",},
@@ -127,6 +127,7 @@
   },
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"644f8d7a-e12a-4a4d-8b41-e099e9c9219c","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"a8b82f64-6707-4972-82ce-52d84c6fec03","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1",},
   ],
   "nineSlice": null,
   "parent": {
